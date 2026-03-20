@@ -11,6 +11,7 @@ function Hero() {
       transition={{ duration: 0.8 }}
     >
       <h1>Hi, I'm Mohit</h1>
+      <p>Frontend Developer building modern web experiences</p>
 
       <TypeAnimation
         sequence={[
@@ -25,6 +26,10 @@ function Hero() {
         repeat={Infinity}
         className="typing"
       />
+      <div class="hero-buttons">
+        <a href="#projects" class="button primary">View Projects</a>
+        <a href="#contact" class="button secondary">Contact Me</a>
+      </div>
       <p className="scroll">↓ Scroll Down</p>
     </motion.div>
   );
