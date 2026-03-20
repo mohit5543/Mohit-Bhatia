@@ -19,10 +19,10 @@ export default function Projects() {
 
   const filteredRepos = repos
     .filter((repo) => !repo.fork)
-    .slice(0, 6);
+    .slice(0, 4);
 
   return (
-    <section className="projects">
+    <section id="projects" className="projects">
       <h1>Projects</h1>
 
       <div className="grid">

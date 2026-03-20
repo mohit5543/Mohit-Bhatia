@@ -21,14 +21,16 @@ function Hero() {
           1500,
           "Building Projects ",
           1500,
+          
         ]}
         speed={50}
         repeat={Infinity}
         className="typing"
+    
       />
       <div class="hero-buttons">
-        <a href="#projects" class="button primary">View Projects</a>
-        <a href="#contact" class="button secondary">Contact Me</a>
+        <a href="#projects" className="button primary">View Projects</a>
+        <a href="#contact" className="button secondary">Contact Me</a>
       </div>
       <p className="scroll">↓ Scroll Down</p>
     </motion.div>
