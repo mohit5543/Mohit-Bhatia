@@ -9,6 +9,7 @@ export default function Navbar() {
 
       <div className={`nav-links ${open ? "active" : ""}`}>
         <a href="#hero" onClick={() => setOpen(false)}>Home</a>
+        <a href="#skills" onClick={() => setOpen(false)}>Skills</a>
         <a href="#projects" onClick={() => setOpen(false)}>Projects</a>
         <a href="#about" onClick={() => setOpen(false)}>About</a>
         <a href="#contact" className="cta" onClick={() => setOpen(false)}>Contact</a>

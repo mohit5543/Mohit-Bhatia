@@ -1,26 +1,29 @@
 function About() {
   return (
-    <section id="about" className="about">
-      <div className="about-container">
-        <h1>About</h1>
+    <section className="about" id="about">
+      <h1>About Me</h1>
 
-        <p className="about-intro">
-          I'm Mohit, a frontend developer focused on building clean,
-          responsive, and user-friendly web applications.
+      <div className="about-container">
+        <p>
+          My journey into development started with curiosity — how websites work,
+          how things move, and how ideas turn into real products.
         </p>
 
-        <div className="about-details">
-          <p>
-            I primarily work with React and JavaScript, and I enjoy
-            creating interfaces that are both functional and visually
-            consistent.
-          </p>
+        <p>
+          Over time, I began learning HTML, CSS, and JavaScript, building small
+          projects and slowly improving my skills. What started as curiosity
+          turned into a passion.
+        </p>
 
-          <p>
-            Currently, I’m expanding my skills in backend development
-            and AI to become a more well-rounded developer.
-          </p>
-        </div>
+        <p>
+          Today, I focus on building modern, responsive, and user-friendly web
+          applications using React and other technologies.
+        </p>
+
+        <p>
+          I’m also exploring AI and continuously pushing myself to learn,
+          improve, and build better projects every day.
+        </p>
       </div>
     </section>
   );

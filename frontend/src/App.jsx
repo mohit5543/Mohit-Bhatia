@@ -4,6 +4,8 @@ import Projects from "./components/Projects";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Skills from "./components/Skills"
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Navbar />
       <div className="container">
         <section><Hero /></section>
+
+        <section><Skills /></section>
       
         <section><Projects /></section>
       
@@ -19,6 +23,7 @@ function App() {
 
         <section><Contact /></section>
       </div>
+      <Footer />
     </div>
   );
 }
