@@ -11,7 +11,6 @@ function Footer() {
             {link.label}
           </a>
         ))}
-        <a href="#contact">Contact</a>
       </div>
     </footer>
   );

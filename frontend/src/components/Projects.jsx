@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { github } from "../data/portfolioData";
+import { github, profile } from "../data/portfolioData";
+import WindowShell from "./features/WindowShell";
 
 function formatLastPushed(dateString) {
   if (!dateString) {
@@ -13,7 +14,7 @@ function formatLastPushed(dateString) {
   }).format(new Date(dateString));
 }
 
-export default function Projects() {
+export default function Projects({ isDesktop, onClose }) {
   const [repos, setRepos] = useState([]);
   const [status, setStatus] = useState("loading");
 
@@ -47,56 +48,76 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="projects">
-      <div className="section-heading">
-        <span className="section-kicker">Latest work</span>
-        <h1>Projects</h1>
-        <p className="section-subtitle">
-          Pulled from GitHub and ordered by most recent push, so the newest work
-          appears first.
-        </p>
+    <WindowShell
+      id="projects"
+      title="projects.feed"
+      className="projects-section"
+      contentClassName="section-window-body"
+      isDesktopOverride={isDesktop}
+      onClose={onClose}
+    >
+      <div className="projects">
+        <div className="section-heading">
+          <span className="section-kicker">Latest work</span>
+          <h1>Projects</h1>
+          <p className="section-subtitle">
+            Pulled from GitHub and ordered by most recent push, so the newest
+            work appears first.
+          </p>
+        </div>
+
+        <div className="grid">
+          {status === "loading" ? (
+            <p className="loading">Loading latest repositories...</p>
+          ) : status === "error" ? (
+            <p className="loading">Unable to load projects right now.</p>
+          ) : (
+            repos.map((repo) => (
+              <article className="card" key={repo.id}>
+                <div className="project-card-top">
+                  <span className="project-language">
+                    {repo.language || "Code project"}
+                  </span>
+                  <span className="project-date">
+                    Pushed {formatLastPushed(repo.pushed_at)}
+                  </span>
+                </div>
+
+                <h2>{repo.name.replace(/-/g, " ")}</h2>
+                <p>
+                  {repo.description ||
+                    "A recent GitHub repository from my portfolio work."}
+                </p>
+
+                <div className="project-meta">
+                  <span>Sorted by latest push</span>
+                  <span>{repo.stargazers_count} stars</span>
+                </div>
+
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button"
+                >
+                  View on GitHub
+                </a>
+              </article>
+            ))
+          )}
+        </div>
+
+        <div className="projects-footer">
+          <a
+            href={profile.contact.github}
+            target="_blank"
+            rel="noreferrer"
+            className="button primary"
+          >
+            Go to GitHub
+          </a>
+        </div>
       </div>
-
-      <div className="grid">
-        {status === "loading" ? (
-          <p className="loading">Loading latest repositories...</p>
-        ) : status === "error" ? (
-          <p className="loading">Unable to load projects right now.</p>
-        ) : (
-          repos.map((repo) => (
-            <article className="card" key={repo.id}>
-              <div className="project-card-top">
-                <span className="project-language">
-                  {repo.language || "Code project"}
-                </span>
-                <span className="project-date">
-                  Pushed {formatLastPushed(repo.pushed_at)}
-                </span>
-              </div>
-
-              <h2>{repo.name.replace(/-/g, " ")}</h2>
-              <p>
-                {repo.description ||
-                  "A recent GitHub repository from my portfolio work."}
-              </p>
-
-              <div className="project-meta">
-                <span>Sorted by latest push</span>
-                <span>{repo.stargazers_count} stars</span>
-              </div>
-
-              <a
-                href={repo.html_url}
-                target="_blank"
-                rel="noreferrer"
-                className="button"
-              >
-                View on GitHub
-              </a>
-            </article>
-          ))
-        )}
-      </div>
-    </section>
+    </WindowShell>
   );
 }

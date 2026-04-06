@@ -20,6 +20,10 @@ export const profile = {
     github: "https://github.com/mohit5543",
     linkedin: "https://www.linkedin.com/in/mohit-bhatia-0a7a341a5/",
   },
+  resume: {
+    label: "Download CV",
+    href: "/mohit-bhatia-cv.pdf",
+  },
 };
 
 export const navigationLinks = [
@@ -27,6 +31,7 @@ export const navigationLinks = [
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export const skillsData = {

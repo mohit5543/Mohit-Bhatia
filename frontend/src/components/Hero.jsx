@@ -1,17 +1,25 @@
 import { motion as Motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import { FiChevronDown } from "react-icons/fi";
 import { profile } from "../data/portfolioData";
+import { TypeAnimation } from "react-type-animation";
+import WindowShell from "./features/WindowShell";
 
-function Hero() {
+function Hero({ isDesktop, onClose }) {
   return (
-    <section id="hero">
+    <WindowShell
+      id="hero"
+      title="portfolio.exe"
+      className="hero-section"
+      contentClassName="hero-body"
+      isDesktopOverride={isDesktop}
+      onClose={onClose}
+    >
       <Motion.div
         className="hero"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
+        <span className="hero-kicker">Available for frontend roles</span>
         <h1>Hi, I'm {profile.name.split(" ")[0]}</h1>
         <p>{profile.title}</p>
 
@@ -21,6 +29,7 @@ function Hero() {
           repeat={Infinity}
           className="typing"
         />
+
         <div className="hero-buttons">
           <a href="#projects" className="button primary">
             View Projects
@@ -29,27 +38,14 @@ function Hero() {
             Contact Me
           </a>
         </div>
-        <Motion.button
-          type="button"
-          className="scroll"
-          onClick={() => {
-            document
-              .querySelector("#skills")
-              ?.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          <span>Scroll Down</span>
 
-          <Motion.div
-            className="scroll-icon"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.2 }}
-          >
-            <FiChevronDown size={24} />
-          </Motion.div>
-        </Motion.button>
+        <div className="hero-highlights">
+          <span>React</span>
+          <span>Responsive UI</span>
+          <span>Clean Frontend</span>
+        </div>
       </Motion.div>
-    </section>
+    </WindowShell>
   );
 }
 
