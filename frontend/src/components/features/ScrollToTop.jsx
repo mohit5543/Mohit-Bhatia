@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiArrowUp } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 function ScrollToTop() {
   const [show, setShow] = useState(false);
@@ -30,7 +30,7 @@ function ScrollToTop() {
   };
 
   return (
-    <motion.button
+    <Motion.button
       className="scroll-top"
       onClick={scrollToTop}
       initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ function ScrollToTop() {
       }}
     >
       <FiArrowUp size={20} />
-    </motion.button>
+    </Motion.button>
   );
 }
 

@@ -322,6 +322,8 @@ section h1::after {
   color: var(--muted);
   font-size: 14px;
   transition: 0.3s ease;
+  background: none;
+  border: none;
 }
 
 .scroll:hover {
@@ -567,12 +569,6 @@ section h1::after {
 
 .contact-container {
   text-align: center;
-}
-
-.contact-text {
-  color: var(--muted);
-  margin: 10px 0 25px;
-  font-size: 15px;
 }
 
 .contact-buttons {

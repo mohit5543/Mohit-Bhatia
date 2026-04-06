@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { github } from "../data/portfolioData";
 
 function formatLastPushed(dateString) {
   if (!dateString) {
@@ -17,7 +18,7 @@ export default function Projects() {
   const [status, setStatus] = useState("loading");
 
   useEffect(() => {
-    fetch("https://api.github.com/users/mohit5543/repos?per_page=100")
+    fetch(`https://api.github.com/users/${github.username}/repos?per_page=100`)
       .then((res) => res.json())
       .then((data) => {
         if (!Array.isArray(data)) {
@@ -33,7 +34,7 @@ export default function Projects() {
             (a, b) =>
               new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
           )
-          .slice(0, 6);
+          .slice(0, github.repoLimit);
 
         setRepos(latestRepos);
         setStatus("success");

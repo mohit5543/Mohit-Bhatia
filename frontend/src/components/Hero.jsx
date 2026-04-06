@@ -1,55 +1,55 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FiChevronDown } from "react-icons/fi";
+import { profile } from "../data/portfolioData";
 
 function Hero() {
   return (
-    <motion.div
-      id="hero"
-      className="hero"
-      initial={{ opacity: 0, y: -30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <h1>Hi, I'm Mohit</h1>
-      <p>Frontend Developer building modern web experiences</p>
-
-      <TypeAnimation
-        sequence={[
-          "Frontend Developer ",
-          1500,
-          "Learning AI ",
-          1500,
-          "Building Projects ",
-          1500,
-          
-        ]}
-        speed={50}
-        repeat={Infinity}
-        className="typing"
-    
-      />
-      <div className="hero-buttons">
-        <a href="#projects" className="button primary">View Projects</a>
-        <a href="#contact" className="button secondary">Contact Me</a>
-      </div>
-      <motion.div
-        className="scroll"
-        onClick={() => {
-          document.querySelector("#skills")?.scrollIntoView({ behavior: "smooth" });
-        }}
+    <section id="hero">
+      <Motion.div
+        className="hero"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <span>Scroll Down</span>
+        <h1>Hi, I'm {profile.name.split(" ")[0]}</h1>
+        <p>{profile.title}</p>
 
-        <motion.div
-          className="scroll-icon"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.2 }}
+        <TypeAnimation
+          sequence={profile.rotatingRoles}
+          speed={50}
+          repeat={Infinity}
+          className="typing"
+        />
+        <div className="hero-buttons">
+          <a href="#projects" className="button primary">
+            View Projects
+          </a>
+          <a href="#contact" className="button secondary">
+            Contact Me
+          </a>
+        </div>
+        <Motion.button
+          type="button"
+          className="scroll"
+          onClick={() => {
+            document
+              .querySelector("#skills")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
         >
-          <FiChevronDown size={24} />
-        </motion.div>
-      </motion.div>
-    </motion.div>
+          <span>Scroll Down</span>
+
+          <Motion.div
+            className="scroll-icon"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.2 }}
+          >
+            <FiChevronDown size={24} />
+          </Motion.div>
+        </Motion.button>
+      </Motion.div>
+    </section>
   );
 }
 

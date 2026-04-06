@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { navigationLinks, profile } from "../data/portfolioData";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -16,21 +17,14 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">Mohit Bhatia</div>
+      <div className="logo">{profile.name}</div>
 
       <div className={`nav-links ${open ? "active" : ""}`}>
-        <a href="#hero" onClick={() => setOpen(false)}>
-          Home
-        </a>
-        <a href="#skills" onClick={() => setOpen(false)}>
-          Skills
-        </a>
-        <a href="#projects" onClick={() => setOpen(false)}>
-          Projects
-        </a>
-        <a href="#about" onClick={() => setOpen(false)}>
-          About
-        </a>
+        {navigationLinks.map((link) => (
+          <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            {link.label}
+          </a>
+        ))}
         <a href="#contact" className="cta" onClick={() => setOpen(false)}>
           Contact
         </a>

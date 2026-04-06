@@ -10,19 +10,14 @@ import ScrollToTop from "./components/features/ScrollToTop";
 
 function App() {
   return (
-    
-    <div >
+    <div>
       <Navbar />
       <div className="container">
-        <section><Hero /></section>
-
-        <section><Skills /></section>
-      
-        <section><Projects /></section>
-      
-        <section><About /></section>
-
-        <section><Contact /></section>
+        <Hero />
+        <Skills />
+        <Projects />
+        <About />
+        <Contact />
       </div>
 
       <ScrollToTop />
